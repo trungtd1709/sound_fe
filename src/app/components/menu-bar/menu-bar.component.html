@@ -1,0 +1,50 @@
+<nav class="menu-bar">
+    <div class="menu-container">
+      <!-- Logo/Brand -->
+      <div class="brand">
+        <a routerLink="/" class="brand-link">
+          <span class="brand-text">MyApp</span>
+        </a>
+      </div>
+  
+      <!-- Desktop Menu -->
+      <ul class="menu-items desktop-menu">
+        <li *ngFor="let item of menuItems" class="menu-item">
+          <a 
+            [routerLink]="item.route" 
+            routerLinkActive="active"
+            class="menu-link"
+            (click)="closeMenu()">
+            <span class="material-icons">{{ item.icon }}</span>
+            <span class="menu-text">{{ item.label }}</span>
+          </a>
+        </li>
+      </ul>
+  
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-toggle" (click)="toggleMenu()" [class.open]="isMenuOpen">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" [class.open]="isMenuOpen" (click)="closeMenu()"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" [class.open]="isMenuOpen">
+      <ul class="mobile-menu-items">
+        <li *ngFor="let item of menuItems" class="mobile-menu-item">
+          <a 
+            [routerLink]="item.route" 
+            routerLinkActive="active"
+            class="mobile-menu-link"
+            (click)="closeMenu()">
+            <span class="material-icons">{{ item.icon }}</span>
+            <span class="menu-text">{{ item.label }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>

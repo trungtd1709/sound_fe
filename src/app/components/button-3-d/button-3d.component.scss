@@ -1,0 +1,136 @@
+// button-3d.component.scss
+
+// Variables
+$button-radius: 8px;
+$button-padding: 12px 24px;
+$font-size: 16px;
+$font-weight: 600;
+$transition-duration: 0.15s;
+$press-animation-duration: 0.15s;
+$ripple-transition-duration: 0.3s;
+
+// Color palette
+$colors: (
+  blue: (
+    gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%),
+    shadow: #4a5ab8
+  ),
+  red: (
+    gradient: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%),
+    shadow: #d63447
+  ),
+  green: (
+    gradient: linear-gradient(135deg, #51cf66 0%, #40c057 100%),
+    shadow: #37b24d
+  ),
+  orange: (
+    gradient: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%),
+    shadow: #e55100
+  ),
+  purple: (
+    gradient: linear-gradient(135deg, #9c88ff 0%, #8c7ae6 100%),
+    shadow: #7b68ee
+  )
+);
+
+// Mixins
+@mixin shadow-3d($depth, $shadow-color) {
+  box-shadow: 
+    0 #{$depth}px 0 var(--shadow-color),
+    0 #{$depth + 2}px #{$depth * 2}px rgba(0, 0, 0, 0.2);
+}
+
+@mixin button-state($translate-y, $shadow-depth, $shadow-opacity: 0.2) {
+  transform: translateY(#{$translate-y}px);
+  box-shadow: 
+    0 #{$shadow-depth}px 0 var(--shadow-color),
+    0 #{$shadow-depth + 4}px #{$shadow-depth * 2}px rgba(0, 0, 0, $shadow-opacity);
+}
+
+// Main button styles
+.btn-3d {
+  position: relative;
+  display: inline-block;
+  padding: $button-padding;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: $button-radius;
+  cursor: pointer;
+  transition: all $transition-duration ease;
+  transform: translateY(0);
+  outline: none;
+  user-select: none;
+  font-family: 'Arial', sans-serif;
+  
+  // Default 3D shadow effect
+  @include shadow-3d(6, var(--shadow-color));
+
+  // Hover state
+  &:hover {
+    @include button-state(-2, 8, 0.25);
+  }
+
+  // Active/pressed state
+  &:active,
+  &.pressed {
+    @include button-state(4, 2, 0.15);
+  }
+
+  // Disabled state
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: translateY(0);
+    @include button-state(0, 4, 0.1);
+  }
+
+  // Color variants
+  @each $color, $props in $colors {
+    &--#{$color} {
+      background: map-get($props, gradient);
+      color: white;
+      --shadow-color: #{map-get($props, shadow)};
+    }
+  }
+
+  // Press animation
+  &.pressed {
+    animation: pressEffect $press-animation-duration ease;
+  }
+
+  // Ripple effect
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width $ripple-transition-duration ease, 
+                height $ripple-transition-duration ease;
+  }
+
+  &:active::after {
+    width: 120%;
+    height: 120%;
+  }
+}
+
+// Keyframes
+@keyframes pressEffect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

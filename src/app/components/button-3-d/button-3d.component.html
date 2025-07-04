@@ -1,0 +1,12 @@
+<!-- button-3d.component.html -->
+<button 
+  class="btn-3d"
+  [class]="'btn-3d--' + selectedColor"
+  [class.pressed]="isPressed"
+  (mousedown)="onMouseDown()"
+  (mouseup)="onMouseUp()"
+  (mouseleave)="onMouseUp()"
+  (click)="onClick()"
+  [disabled]="disabled">
+  <ng-content></ng-content>
+</button>
