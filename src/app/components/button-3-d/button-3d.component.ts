@@ -1,4 +1,3 @@
-// button-3d.component.ts
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
@@ -9,6 +8,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 export class Button3DComponent implements OnInit {
   @Input() disabled = false;
   @Input() color?: string; // Optional: force a specific color
+  @Input() size: 'small' | 'medium' | 'large' | 'xl' = 'medium'; // Size variants
   @Output() buttonClick = new EventEmitter<void>();
 
   selectedColor = 'blue';
@@ -43,5 +43,9 @@ export class Button3DComponent implements OnInit {
     if (!this.disabled) {
       this.buttonClick.emit();
     }
+  }
+
+  get buttonClasses(): string {
+    return `btn-3d btn-3d--${this.selectedColor} btn-3d--${this.size}`;
   }
 }

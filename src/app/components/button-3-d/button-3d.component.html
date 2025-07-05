@@ -1,7 +1,6 @@
 <!-- button-3d.component.html -->
 <button 
-  class="btn-3d"
-  [class]="'btn-3d--' + selectedColor"
+  [class]="buttonClasses"
   [class.pressed]="isPressed"
   (mousedown)="onMouseDown()"
   (mouseup)="onMouseUp()"
