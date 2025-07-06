@@ -5,7 +5,7 @@ import { Button3DComponent } from './components/button-3-d/button-3d.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MenuBarComponent, Button3DComponent],
+  imports: [RouterOutlet, MenuBarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
