@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Button3DComponent } from '../button-3-d/button-3d.component';
 
 @Component({
@@ -9,8 +9,14 @@ import { Button3DComponent } from '../button-3-d/button-3d.component';
 })
 
 export class SoundCardComponent {
-  @Input() title: string = 'sound';
-  
+  @Input() title?: string;
+  @Input() soundUrl?: string;
+
+  @Output() onSoundPlay = new EventEmitter<string>();
+  @Output() onSoundLike = new EventEmitter<string>();  
+  @Output() onSoundShare = new EventEmitter<string>(); 
+  @Output() onSoundDownload = new EventEmitter<string>(); 
+
   isLiked = false;
   showSoundNotification = false;
   clickCount = 0;

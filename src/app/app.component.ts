@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
 import { Button3DComponent } from './components/button-3-d/button-3d.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',

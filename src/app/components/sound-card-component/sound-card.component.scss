@@ -1,108 +1,109 @@
-// sound-card.component.scss
-
 .sound-card-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  padding: 20px;
+  width: auto;
+}
+
+.button-label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: underline;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.action-buttons {
+  display: flex;
+  // gap: 10px;
+  align-items: center;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
   }
-  
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.heart-btn {
+  &.liked {
+    animation: heartBeat 0.3s ease;
+    transform: scale(1.2);
+  }
+}
+
+.sound-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #22c55e;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heartBeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .sound-card-container {
+    padding: 20px;
+    max-width: 280px;
+  }
+
   .button-label {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    text-decoration: underline;
-    margin-top: 10px;
-    text-align: center;
+    font-size: 16px;
   }
-  
+
   .action-buttons {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    margin-top: 20px;
+    gap: 5px;
   }
-  
+
   .action-btn {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 50%;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    
-    &:hover {
-      background: rgba(0, 0, 0, 0.1);
-      transform: scale(1.1);
-    }
-    
-    &:active {
-      transform: scale(0.95);
-    }
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
   }
-  
-  .heart-btn {
-    &.liked {
-      animation: heartBeat 0.3s ease;
-      transform: scale(1.2);
-    }
-  }
-  
-  .sound-notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #22c55e;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: bold;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: all 0.3s ease;
-    z-index: 1000;
-    
-    &.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-  }
-  
-  // Responsive design
-  @media (max-width: 768px) {
-    .sound-card-container {
-      padding: 20px;
-      max-width: 280px;
-    }
-    
-    .button-label {
-      font-size: 16px;
-    }
-    
-    .action-buttons {
-      gap: 15px;
-    }
-    
-    .action-btn {
-      width: 45px;
-      height: 45px;
-      font-size: 20px;
-    }
-  }
+}

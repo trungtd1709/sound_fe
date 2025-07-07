@@ -1,2 +1,59 @@
-<p>home works!</p>
-<app-sound-card title="bruh sound"></app-sound-card>
+<div class="home-container">
+  <!-- Header Section -->
+  <div class="header">
+    <h1 class="title">Sound Instants: 1000+ Âm thanh meme!</h1>
+    <p class="subtitle">
+      Khám phá bộ sưu tập không lồ các nút âm thanh vui nhộn, meme, hiệu ứng âm
+      thanh và bảng âm thanh<br />
+      hoàn toàn miễn phí! Dễ dàng tạo nút âm thanh túy chỉnh của riêng bạn ngay
+      từ điện thoại thông minh,<br />
+      máy tính để bàn hoặc máy tính bảng.
+    </p>
+  </div>
+
+  <!-- Search Section -->
+  <!-- <div class="search-section">
+      <div class="search-container">
+        <input 
+          type="text" 
+          class="search-input" 
+          placeholder="get out"
+          [(ngModel)]="searchTerm"
+          (input)="onSearch()"
+        >
+        <button class="search-button" (click)="onSearch()">
+          <i class="search-icon">🔍</i>
+          Tìm kiếm
+        </button>
+      </div>
+    </div> -->
+
+  <!-- Trending Section -->
+  <div class="trending-section">
+    <div class="trending-header">
+      <span class="trending-icon">📈</span>
+      <span class="trending-text">Đang thịnh hành tại Hoa Kỳ</span>
+      <a href="#" class="view-all-link">Xem tất cả</a>
+    </div>
+  </div>
+
+  <!-- Sound Grid -->
+  <div class="sound-grid">
+    <ng-container *ngFor="let sound of soundItems">
+
+        <div class="flex-item">
+            <app-sound-card
+            [title]="sound.title"
+            (onSoundPlay)="onSoundPlay($event)"
+            (onSoundLike)="onSoundLike($event)"
+            (onSoundShare)="onSoundShare($event)"
+            (onSoundDownload)="onSoundDownload($event)"
+            ></app-sound-card>
+        </div>
+    </ng-container>
+  </div>
+
+  <!-- <div *ngIf="filteredSoundItems.length === 0" class="no-results">
+      <p>Không tìm thấy âm thanh nào phù hợp với "{{ searchTerm }}"</p>
+    </div> -->
+</div>
