@@ -1,35 +1,31 @@
 <!-- sound-card.component.html -->
 <div class="sound-card-container">
-    <app-button-3d
-      size="xl"
-      (buttonClick)="playSound()">
-    </app-button-3d>
-    
-    <span class="button-label">{{title}}</span>
-    
-    <div class="action-buttons d-flex gap-3 mt-3">
-      <button 
-        class="action-btn heart-btn"
-        [class.liked]="isLiked"
-        (click)="toggleLike()"
-        title="Like">
-        ❤️
-      </button>
-      
-      <button 
-        class="action-btn share-btn"
-        (click)="shareButton()"
-        title="Share">
-        🔗
-      </button>
-      
-      <button 
-        class="action-btn download-btn"
-        (click)="downloadSound()"
-        title="Download">
-        ⬇️
-      </button>
-    </div>
+  <app-button-3d size="xl" (buttonClick)="playSound()"> </app-button-3d>
+
+  <span class="button-label" (click)="viewSoundDetail()">{{ title }}</span>
+
+  <div class="action-buttons d-flex gap-3 mt-3">
+    <button
+      class="action-btn heart-btn"
+      [class.liked]="isLiked"
+      (click)="toggleLike()"
+      title="Like"
+    >
+      ❤️
+    </button>
+
+    <button class="action-btn share-btn" (click)="shareButton()" title="Share">
+      🔗
+    </button>
+
+    <button
+      class="action-btn download-btn"
+      (click)="downloadSound()"
+      title="Download"
+    >
+      ⬇️
+    </button>
+  </div>
 </div>
 
 <!-- Sound notification -->

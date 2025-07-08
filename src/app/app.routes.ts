@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { SoundDetailComponent } from './pages/sound-detail/sound-detail.component';
 
 export const routes: Routes = [
     // Default route - redirects to home
@@ -27,14 +28,13 @@ export const routes: Routes = [
       component: ContactComponent,
       title: 'Contact - My App'
     },
-    // {
-    //   path: 'products/:id',
-    //   component: ProductDetailsComponent,
-    //   title: 'Product Details - My App',
-    //   resolve: {
-    //     product: ProductResolver
-    //   }
-    // },
+    {
+      path: 'sound/:id',
+      component: SoundDetailComponent,
+      title: 'Product Details - My App',
+      resolve: {
+      }
+    },
     
     // // Protected user routes with nested routing
     // {
