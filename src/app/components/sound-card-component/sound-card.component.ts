@@ -58,13 +58,10 @@ export class SoundCardComponent {
   }
 
   downloadSound() {
-    // In a real implementation, this would download the sound file
-    console.log('Download sound file');
     alert('Download functionality would be implemented here!');
   }
 
   viewSoundDetail() {
-    // alert('dqwdwqqdw');
     this.navigation.navigateSoundDetail("1");
   }
 }
