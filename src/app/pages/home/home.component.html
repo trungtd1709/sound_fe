@@ -38,22 +38,5 @@
   </div>
 
   <!-- Sound Grid -->
-  <div class="sound-grid">
-    <ng-container *ngFor="let sound of soundItems">
-
-        <div class="flex-item">
-            <app-sound-card
-            [title]="sound.title"
-            (onSoundPlay)="onSoundPlay($event)"
-            (onSoundLike)="onSoundLike($event)"
-            (onSoundShare)="onSoundShare($event)"
-            (onSoundDownload)="onSoundDownload($event)"
-            ></app-sound-card>
-        </div>
-    </ng-container>
-  </div>
-
-  <!-- <div *ngIf="filteredSoundItems.length === 0" class="no-results">
-      <p>Không tìm thấy âm thanh nào phù hợp với "{{ searchTerm }}"</p>
-    </div> -->
+  <app-sound-card-grid></app-sound-card-grid>
 </div>
