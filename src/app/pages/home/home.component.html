@@ -39,4 +39,11 @@
 
   <!-- Sound Grid -->
   <app-sound-card-grid></app-sound-card-grid>
+  <app-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    [maxVisiblePages]="5"
+    (pageChange)="onPageChange($event)"
+  >
+  </app-pagination>
 </div>

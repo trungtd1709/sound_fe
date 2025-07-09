@@ -13,9 +13,10 @@ export class MenuBarComponent {
   isMenuOpen = false;
 
   menuItems = [
-    { label: 'Home', route: '/home', icon: 'home' },
-    { label: 'About', route: '/about', icon: 'info' },
-    { label: 'Contact', route: '/contact', icon: 'contact_mail' }
+    { label: 'Home', route: '/home' },
+    { label: 'New', route: '/about' },
+    { label: 'Category', route: '/contact' },
+    { label: 'Popular', route: '/Popular' },
   ];
 
   toggleMenu() {
