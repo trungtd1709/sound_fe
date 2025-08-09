@@ -1,50 +1,52 @@
 <nav class="menu-bar">
-    <div class="menu-container">
-      <!-- Logo/Brand -->
-      <div class="brand">
-        <a routerLink="/" class="brand-link">
-          <span class="brand-text">Sound Buttons</span>
+  <div class="menu-container">
+    <!-- Logo -->
+    <div class="logo">
+      <div class="logo-icon"></div>
+      <span class="logo-text">Sound Buttons</span>
+    </div>
+    
+    <!-- Navigation Menu -->
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="#" class="nav-link">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link new-item">
+          <span class="new-badge">NEW</span>
         </a>
-      </div>
-  
-      <!-- Desktop Menu -->
-      <ul class="menu-items desktop-menu">
-        <li *ngFor="let item of menuItems" class="menu-item">
-          <a 
-            [routerLink]="item.route" 
-            routerLinkActive="active"
-            class="menu-link"
-            (click)="closeMenu()">
-            <span class="material-icons">{{ item.icon }}</span>
-            <span class="menu-text">{{ item.label }}</span>
-          </a>
-        </li>
-      </ul>
-  
-      <!-- Mobile Menu Toggle -->
-      <button class="mobile-toggle" (click)="toggleMenu()" [class.open]="isMenuOpen">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">TRENDS</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link">
+          CATEGORIES
+          <span class="dropdown-arrow">▼</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">CREATE SOUND</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">ABOUT ME</a>
+      </li>
+    </ul>
+    
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button class="btn btn-login" (click)="onLogin()">
+        <span class="btn-icon">👤</span>
+        Log-in
+      </button>
+      <button class="btn btn-signup" (click)="onSignUp()">
+        <span class="btn-icon">👤</span>
+        Sign-up
+      </button>
+      <button class="btn btn-upload" (click)="onUpload()">
+        <span class="btn-icon">⬆</span>
+        Upload
       </button>
     </div>
-  
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" [class.open]="isMenuOpen" (click)="closeMenu()"></div>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" [class.open]="isMenuOpen">
-      <ul class="mobile-menu-items">
-        <li *ngFor="let item of menuItems" class="mobile-menu-item">
-          <a 
-            [routerLink]="item.route" 
-            routerLinkActive="active"
-            class="mobile-menu-link"
-            (click)="closeMenu()">
-            <span class="material-icons">{{ item.icon }}</span>
-            <span class="menu-text">{{ item.label }}</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  </div>
+</nav>
