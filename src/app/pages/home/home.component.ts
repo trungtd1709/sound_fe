@@ -1,67 +1,41 @@
 import { Component, NgModule } from '@angular/core';
-import { SoundCardComponent } from '../../components/sound-card-component/sound-card.component';
+import { SoundCardComponent } from '../../components/sound-card/sound-card.component';
 import { CommonModule } from '@angular/common';
-
-interface SoundItem {
-  id: string;
-  title: string;
-  color: string;
-  audioUrl?: string;
-}
+import { Sound } from '../../models/sound.model';
+import { SoundCardGridComponent } from '../../components/sound-card-grid/sound-card-grid.component';
+import { PaginationComponent } from '../../components/pagination/pagination.component';
 
 
 @Component({
   selector: 'app-home',
-  imports: [SoundCardComponent, CommonModule],
+  imports: [CommonModule, SoundCardGridComponent, PaginationComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  searchTerm: string = '';
-  
-  soundItems: SoundItem[] = [
-    { id: 'vine-boom', title: 'VINE BOOM SOUND', color: '#9c27b0' },
-    { id: 'tuco-get-out', title: 'Tuco: GET OUT', color: '#9c27b0' },
-    { id: 'fart', title: 'Fart', color: '#424242' },
-    { id: 'among-us', title: 'Among Us role reveal...', color: '#ff9800' },
-    { id: 'anime-wow', title: 'Anime Wow', color: '#ff9800' },
-    { id: 'rizz-sound', title: 'rizz sound effect', color: '#9c27b0' },
-    { id: 'italian-brainrot', title: 'italian brainrot ringtone', color: '#4caf50' },
-    { id: 'spongebob-fail', title: 'SpongeBob Fail', color: '#2196f3' },
-    { id: 'apple-pay', title: 'Apple Pay', color: '#424242' },
-    { id: 'baby-laughing', title: 'baby laughing meme', color: '#e91e63' },
-    
-    { id: 'sad-violin', title: 'Sad Violin (the meme...', color: '#cddc39' },
-    { id: 'metal-pipe', title: 'Metal pipe clang', color: '#ff9800' },
-    { id: 'flashbanggo', title: 'flashbanggo', color: '#f44336' },
-    { id: 'bruh', title: 'BRUH', color: '#9e9e9e' },
-    { id: 'buzzer', title: 'Buzzer', color: '#ff9800' },
-    { id: 'scream-meme', title: 'Scream meme', color: '#9c27b0' },
-    { id: 'syfm', title: 'Syfm', color: '#9c27b0' },
-    { id: 'undertaker', title: 'The Undertaker...', color: '#424242' },
-    { id: 'bone-crack', title: 'Bone Crack', color: '#e91e63' },
-    { id: 'let-me-know', title: 'let me know', color: '#2196f3' }
-  ];
+  currentPage = 1;
+  itemsPerPage = 10;
+  totalItems = 80; // Your total data count
+  totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+
+  // Your data
+  allData = Array.from({ length: this.totalItems }, (_, i) => ({
+    id: i + 1,
+    name: `Item ${i + 1}`
+  }));
+
+  // Current page data
+  get paginatedData() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    return this.allData.slice(start, end);
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    // Here you might also want to scroll to top or fetch new data
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   constructor() {}
-
-  onSoundPlay(soundId: string): void {
-    console.log('Playing sound:', soundId);
-    // Implement sound playing logic here
-  }
-
-  onSoundLike(soundId: string): void {
-    console.log('Liked sound:', soundId);
-    // Implement like functionality here
-  }
-
-  onSoundShare(soundId: string): void {
-    console.log('Shared sound:', soundId);
-    // Implement share functionality here
-  }
-
-  onSoundDownload(soundId: string): void {
-    console.log('Downloaded sound:', soundId);
-    // Implement download functionality here
-  }
 }

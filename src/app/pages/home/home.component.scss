@@ -114,13 +114,6 @@
   }
 }
 
-.sound-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 24px;
-  margin-bottom: 40px;
-}
-
 .no-results {
   text-align: center;
   padding: 60px 20px;
@@ -177,11 +170,6 @@
       }
     }
   }
-
-  .sound-grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 16px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -190,13 +178,4 @@
       font-size: 1.8rem;
     }
   }
-
-  .sound-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 12px;
-  }
-}
-
-.flex-item {
-  flex: 1;
 }

@@ -1,0 +1,9 @@
+<div class="sound-grid">
+    <ng-container *ngFor="let sound of soundItems">
+        <div class="flex-item">
+            <app-sound-card
+            [title]="sound.title"
+            ></app-sound-card>
+        </div>
+    </ng-container>
+  </div>
